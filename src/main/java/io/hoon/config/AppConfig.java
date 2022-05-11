@@ -1,5 +1,6 @@
 package io.hoon.config;
 
+import io.hoon.discount.DiscountPolicy;
 import io.hoon.discount.RateDiscountPolicy;
 import io.hoon.member.MemberRepository;
 import io.hoon.member.MemberService;
@@ -14,10 +15,18 @@ import io.hoon.order.OrderServiceImpl;
  */
 public class AppConfig {
     public MemberService memberService() {
-        return new MemberServiceImpl(new MemoryMemberRepository());
+        return new MemberServiceImpl(memberRepository());
+    }
+
+    private MemberRepository memberRepository() {
+        return new MemoryMemberRepository();
     }
 
     public OrderService orderService() {
-        return new OrderServiceImpl(new MemoryMemberRepository(), new RateDiscountPolicy());
+        return new OrderServiceImpl(memberRepository(), discountPolicy());
+    }
+
+    private DiscountPolicy discountPolicy() {
+        return new RateDiscountPolicy();
     }
 }
