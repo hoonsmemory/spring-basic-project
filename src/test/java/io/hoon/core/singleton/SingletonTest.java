@@ -39,6 +39,6 @@ public class SingletonTest {
         //참조값이 다른 것을 확인
         System.out.println("singletonService1 : " + singletonService1);
         System.out.println("singletonService2 : " + singletonService2);
-        Assertions.assertThat(singletonService1).isEqualTo(singletonService2);
+        Assertions.assertThat(singletonService1).isSameAs(singletonService2);
     }
 }
