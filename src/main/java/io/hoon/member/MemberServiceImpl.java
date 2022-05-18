@@ -1,7 +1,12 @@
 package io.hoon.member;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class MemberServiceImpl implements MemberService {
 
+    @Autowired
     private final MemberRepository memberRepository;
 
     /**
