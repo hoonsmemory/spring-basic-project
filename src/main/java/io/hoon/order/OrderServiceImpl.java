@@ -1,5 +1,6 @@
 package io.hoon.order;
 
+import io.hoon.annotation.MainDiscountPolicy;
 import io.hoon.discount.DiscountPolicy;
 import io.hoon.discount.FixDiscountPolicy;
 import io.hoon.discount.RateDiscountPolicy;
@@ -29,7 +30,7 @@ public class OrderServiceImpl implements OrderService {
     private final DiscountPolicy discountPolicy;
 
     @Autowired
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+    public OrderServiceImpl(MemberRepository memberRepository, @MainDiscountPolicy DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
