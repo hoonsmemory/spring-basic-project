@@ -1,8 +1,12 @@
 package io.hoon.discount;
 
+import io.hoon.annotation.MainDiscountPolicy;
 import io.hoon.member.Grade;
 import io.hoon.member.Member;
+import org.springframework.stereotype.Component;
 
+@Component
+@MainDiscountPolicy
 public class RateDiscountPolicy implements DiscountPolicy {
 
     private static int discountPercent = 10;// 10% 활인

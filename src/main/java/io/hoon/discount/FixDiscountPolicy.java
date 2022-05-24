@@ -2,7 +2,9 @@ package io.hoon.discount;
 
 import io.hoon.member.Grade;
 import io.hoon.member.Member;
+import org.springframework.stereotype.Component;
 
+@Component
 public class FixDiscountPolicy implements DiscountPolicy {
 
     private static int discountFixAmount = 1000;//할인 고정금액
