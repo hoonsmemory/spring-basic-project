@@ -1,10 +1,10 @@
 package io.hoon.core.lifecycle;
 
-import org.springframework.beans.factory.DisposableBean;
-import org.springframework.beans.factory.InitializingBean;
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 
 
-public class NetworkClient implements InitializingBean, DisposableBean {
+public class NetworkClient {
 
     private String url;
 
@@ -28,15 +28,15 @@ public class NetworkClient implements InitializingBean, DisposableBean {
         System.out.println("close : " + url);
     }
 
-    @Override
-    public void destroy() throws Exception {
-        System.out.println("######################## destroy ########################");
+    @PostConstruct
+    public void init() throws Exception {
+        System.out.println("######################## init ########################");
         disconnect();
     }
 
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        System.out.println("######################## afterPropertiesSet ########################");
+    @PreDestroy
+    public void close() throws Exception {
+        System.out.println("######################## close ########################");
         connect();
         call("초기화 연결 메시지");
     }

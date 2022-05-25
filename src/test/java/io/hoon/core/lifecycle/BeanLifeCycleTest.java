@@ -17,6 +17,7 @@ public class BeanLifeCycleTest {
     @Configuration
     static class LifeCycleConfig {
 
+        //@Bean(initMethod = "afterPropertiesSet", destroyMethod = "destroy")
         @Bean
         public NetworkClient networkClient() {
             NetworkClient networkClient = new NetworkClient();
